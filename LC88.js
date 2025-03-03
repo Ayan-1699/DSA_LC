@@ -36,3 +36,32 @@ function merge (nums1, m, nums2, n) {
     }
     return nums1;
 };
+
+// done from chatgpt   O(m+n)
+
+function merge(nums1, m, nums2, n) {
+    let temp = [];
+    let i = 0, j = 0, k = 0;
+    
+    while (i < m && j < n) {
+        if (nums1[i] < nums2[j]) {
+            temp[k++] = nums1[i++];
+        } else {
+            temp[k++] = nums2[j++];
+        }
+    }
+    
+    while (i < m) {
+        temp[k++] = nums1[i++];
+    }
+    
+    while (j < n) {
+        temp[k++] = nums2[j++];
+    }
+    
+    for (let x = 0; x < m + n; x++) {
+        nums1[x] = temp[x];
+    }
+
+    return nums1;
+}
